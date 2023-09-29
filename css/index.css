@@ -27,6 +27,7 @@ h1 {
 
 .contPrincipal {
     width: 100%;
+    heigth: 100vh;
 }
 
 .inputInyect {
