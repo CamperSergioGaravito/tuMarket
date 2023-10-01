@@ -8,6 +8,15 @@ const btnIngresar = document.getElementById('btnIngresar');
 
 const productos = [];
 
+function validarInput(input) {
+    if(input === '' || parseInt(input) < 0) {
+        return input = '0';
+    }
+    else {
+        return input;
+    }
+}
+
 function clickTr(e) {
     if(e.target.id === 'modificar') {
         const btn = e.target;
@@ -25,6 +34,9 @@ function clickTr(e) {
         btnConfirmar.addEventListener('click', () => {
             /* console.log(parseInt(input.value)) */
             /* console.log(input.value,typeof(input.value)) */
+
+            input.value = validarInput(input.value);
+
             if(parseInt(input.value) < 100) {
                 const valor = parseInt(tr.querySelector('#precioProd').textContent);
                 tr.querySelector('#precioProd').textContent = valor - (valor * (input.value / 100));
@@ -33,14 +45,15 @@ function clickTr(e) {
                 btn.disabled = false;
                 btnConfirmar.disabled = true;
             }
+
             else {
-                alert('El porcentaje no puede ser mayor a 100.')
-                return
+                alert('El porcentaje no puede ser mayor a 100.');
+                return;
             }
         })
     }
     else {
-        return
+        return;
     }
 }
 
