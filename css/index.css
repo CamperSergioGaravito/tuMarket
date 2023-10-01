@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Mooli&family=Phudu:wght@900&family=Roboto+Slab:wght@100;400&display=swap');
 
 body {
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
+    width: 100%;
     height: 100vh;
 }
 
@@ -21,13 +22,12 @@ h1 {
 
 .imgFondo {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     object-fit: cover;
 }
 
 .contPrincipal {
     width: 100%;
-    heigth: 100vh;
 }
 
 .inputInyect {

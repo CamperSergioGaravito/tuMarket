@@ -13,21 +13,30 @@ function clickTr(e) {
         const btn = e.target;
         const tr = e.target.offsetParent.parentElement;
     
-        console.log(btn)
-        console.log(e)
+        /* console.log(btn) */
+        /* console.log(e) */
 
         const btnConfirmar = e.target.offsetParent.querySelector('#confirmar');
         btnConfirmar.disabled = false;
         btn.disabled = true;
         const input = tr.querySelector('input');
         input.disabled = false;
-        input.style = 'border: 1px #0d6efd solid'
+        input.style = 'border: 1px #0d6efd solid';
         btnConfirmar.addEventListener('click', () => {
-            const valor = parseInt(tr.querySelector('#precioProd').textContent);
-            tr.querySelector('#precioProd').textContent = valor - (valor * (input.value / 100));
-            input.disabled = true;
-            btn.disabled = false;
-            btnConfirmar.disabled = true;
+            /* console.log(parseInt(input.value)) */
+            /* console.log(input.value,typeof(input.value)) */
+            if(parseInt(input.value) < 100) {
+                const valor = parseInt(tr.querySelector('#precioProd').textContent);
+                tr.querySelector('#precioProd').textContent = valor - (valor * (input.value / 100));
+                input.style = 'border: none';
+                input.disabled = true;
+                btn.disabled = false;
+                btnConfirmar.disabled = true;
+            }
+            else {
+                alert('El porcentaje no puede ser mayor a 100.')
+                return
+            }
         })
     }
     else {
@@ -51,7 +60,7 @@ btnIngresar.addEventListener('click',(e) => {
         tr.insertAdjacentHTML('beforeend',tempItem)
 
         const btnsMC = tr.children[tr.children.length-1].querySelectorAll('button');
-        console.log(btnsMC)
+        /* console.log(btnsMC) */
         btnsMC.forEach(btn => {
             btn.addEventListener('click',clickTr)
         })
